@@ -1,0 +1,42 @@
+{
+    "users": [
+      {
+        "id": 0,
+        "groupmsgid": 0,
+        "name": "小彭同学来上课了吗",
+        "content": "你好有资料分享一哈嘛",
+        "date": "new Date()"
+      },
+      {
+        "id": 1,
+        "groupmsgid": 1,
+        "name": "jessy丶x",
+        "content": "p182 获取左侧菜单数据，就是登录成功后，显示无效token，怎么处理",
+        "date": "new Date()"
+      },
+      {
+        "id": 2,
+        "groupmsgid": 0,
+        "name": "茶颜悦色Lovel",
+        "content": "老师讲的挺好的 刚建了个新群 也给大家准备了许多文档资料 人数不多 先到的前100名送java进阶电子书籍 为明年春招提升自己的技术 有需求的可以添加QQ群：926849848",
+        "date": "new Date()"
+      },
+      {
+        "id": 3,
+        "groupmsgid": 1,
+        "name": "贱哥哥jj",
+        "content": "求源码",
+        "date": "new Date()"
+      }
+    ],
+    "groupmsg": [
+      {
+        "id": 0,
+        "name": "google"
+      },
+      {
+        "id": 1,
+        "name": "baidu"
+      }
+    ]
+  }
