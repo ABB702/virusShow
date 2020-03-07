@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "jsonserver":"json-server --watch db.json"
+    "jsonserver": "json-server --watch db.json"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -30,7 +30,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.1.2",
-    "less": "^3.0.4",
+    "less": "^3.11.1",
     "less-loader": "^5.0.0",
     "vue-cli-plugin-element": "^1.0.1",
     "vue-template-compiler": "^2.6.11"
