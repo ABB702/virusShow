@@ -1,21 +1,15 @@
 <template>
   <div class="loginContainer">
-      <el-form
-        :model="ruleForm"
-        :rules="rules"
-        ref="ruleForm"
-        label-width="0px"
-        class="loginBox"
-      >
-        <h1>LOGIN</h1>
-        <el-form-item label="" prop="name">
-          <el-input prefix-icon="el-icon-user-solid" placeholder="Username" v-model="ruleForm.name"></el-input>
+      <el-form :model="formData" :rules="rules" ref="formRef" class="loginBox">
+        <h1>--LOGIN--</h1>
+        <el-form-item prop="username">
+          <el-input v-model= "formData.username" prefix-icon="el-icon-user-solid" placeholder="Username"></el-input>
         </el-form-item>
-        <el-form-item label="" prop="pass">
-          <el-input prefix-icon="el-icon-s-goods" placeholder="password" type="password" v-model="ruleForm.pass"></el-input>
+        <el-form-item prop="password"><!--注意prop需要与检测值同名-->
+          <el-input v-model= "formData.password" prefix-icon="el-icon-s-goods" placeholder="password" type="password"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
+          <el-button type="primary" @click="submitForm">登录</el-button>
         </el-form-item>
       </el-form>
   </div>
@@ -25,39 +19,42 @@
 export default {
   data () {
     return {
-      ruleForm: {
-        name: '',
-        pass: ''
+      formData: {
+        username: '贱哥哥jj',
+        password: '3'
       },
-      rules: { // 自动校验
-        name: [
-          { required: true, message: '请输入用户名', trigger: 'blur' },
-          { min: 2, max: 18, message: '长度在 2 到 18 个字符', trigger: 'blur' }
+      rules: {
+        username: [
+          { required: true, message: '请输入用户名称', trigger: 'blur' },
+          { min: 3, max: 20, message: '长度在 1 到 20 个字符', trigger: 'blur' }
         ],
-        pass: [
+        password: [
           { required: true, message: '请输入密码', trigger: 'blur' },
-          { min: 1, max: 18, message: '长度在 1 到 18 个字符', trigger: 'blur' }
+          { min: 1, max: 20, message: '长度在 1 到 20 个字符', trigger: 'blur' }
         ]
       }
     }
   },
+
   methods: {
-    submitForm (ruleForm) {
-      this.$refs[ruleForm].validate(valid => {
+    submitForm () {
+      this.$refs.formRef.validate(valid => { // 表单预验证,存在读取undefined的情况
         if (valid) {
           this.$http.get('/users').then(res => {
-            console.log(res.data)
-            const getPwd = res.data.filter(item => item.name === ruleForm.name).id // 暂时写ID，实际上是密码
-            console.log(getPwd)
-            console.log(ruleForm.name)
-            if (getPwd === ruleForm.pass) console.log('跳转')
+            const getPwd = res.data.filter(item => item.name === this.formData.username) // return [{}]
+            console.log(res) // tempconsole
+            if (getPwd[0].id == this.formData.password){ //eslint-disable-line
+              console.log('跳转')
+              window.sessionStorage.setItem('token', getPwd[0].id) // 假token
+              this.$router.push('/home')
+            }//eslint-disable-line
             else {
-              prompt('error')
+              this.$message.error('用户名或密码错误')
               return false
             }
           })
         } else {
-          console.log('error submit!!')
+          this.$message.error('信息填写不完整!!')
           return false
         }
       })
