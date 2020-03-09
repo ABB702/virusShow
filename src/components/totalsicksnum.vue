@@ -1,11 +1,11 @@
 <template>
   <div class="totalSicksNumApp">
-    <article class="sTitle">截止{{totalsicks.time}},病例统计</article>
+    <article class="sTitle">截止{{totalsicks.time}},武汉病例</article>
     <div class="sWrap">
-      <section><article>确诊</article><article class="tData">{{totalsicks.diagnose}}</article></section>
-      <section><article>疑似</article><article class="tData">{{totalsicks.suspected}}</article></section>
-      <section><article>治愈</article><article class="tData">{{totalsicks.cured}}</article></section>
-      <section><article>死亡</article><article class="tData">{{totalsicks.death}}</article></section>
+      <section><article class="tTitle">确诊</article><article class="tData" style="color:#c0392b;">{{totalsicks.diagnose}}</article></section>
+      <section><article class="tTitle">疑似</article><article class="tData" style="color:#f1c40f;">{{totalsicks.suspected}}</article></section>
+      <section><article class="tTitle">治愈</article><article class="tData" style="color:#27ae60;">{{totalsicks.cured}}</article></section>
+      <section><article class="tTitle">死亡</article><article class="tData" style="color:#000;">{{totalsicks.death}}</article></section>
     </div>
   </div>
 </template>
@@ -47,41 +47,52 @@ export default {
   background-size: cover;
   background-repeat:no-repeat;
 }
+.totalSicksNumApp article {
+  font-size: 1em;
+  align-items:center;
+}
+.totalSicksNumApp .sTitle {
+  box-sizing:border-box;
+  margin: 10px;
+  width: 100%;
+  height: 20%;
+  padding: 2px;
+  text-align: center;
+  vertical-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: #dff9fb;
+}
 .totalSicksNumApp .sWrap {
   display: flex;
   box-sizing:border-box;
   margin: 0px;
   width: 100%;
-  height: 90%;
+  height: 70%;
   padding: 0px;
-}
-.totalSicksNumApp .sTitle {
-  box-sizing:border-box;
-  margin: 0px;
-  width: 100%;
-  height: 10%;
-  padding: 0px;
-  text-align: center;
-  font-size: bold;
-}
-.tData {
-  padding: 6px;
-  position: absolute;
-  bottom: 0px;
-}
-.totalSicksNumApp .sWrap section {
-  height: 100%;
-  margin: 2%;
-  padding-top: 10%;
-  box-sizing:border-box;
-  flex: 1 1 auto;
-  background-color:rgba(1, 163, 164,0.4);
-  text-align: center;
-  overflow: hidden;
-  position: relative;
-}
-.totalSicksNumApp article {
-  font-size: 1em;
-  align-items:center;
+  section {
+    height: 100%;
+    margin: 0 1%;
+    padding-top: 2%;
+    box-sizing:border-box;
+    flex: 1 1 auto;
+    background-color:rgba(1, 163, 164,0.4);
+    text-align: center;
+    position: relative;
+    .tTitle {
+      font-size:20px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .tData {
+      width:100%;
+      font-size:15px;
+      font-weight: 700;
+      text-align: center;
+      padding: 5px 0px;
+      position: absolute;
+      bottom: 2px;
+    }
+  }
 }
 </style>

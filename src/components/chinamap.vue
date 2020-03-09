@@ -3,7 +3,7 @@
     <div class="zouWrapper">
       <el-carousel class="zouMaDeng">
         <el-carousel-item v-for="item in imgList" :key="item.index">
-          <img v-bind:src="item.url">
+          <img style="width:100%;height:100%;" v-bind:src="item.url">
         </el-carousel-item>
       </el-carousel>
     </div>
@@ -16,26 +16,26 @@ export default {
       imgList: [
         {
           index: 0,
-          url: require('../assets/1.jpg')
+          url: require('../assets/1.jpeg')
         },
         {
           index: 1,
-          url: require('../assets/2.jpg')
+          url: require('../assets/2.jpeg')
         },
         {
           index: 2,
-          url: require('../assets/3.jpg')
+          url: require('../assets/3.jpeg')
         },
         {
           index: 3,
-          url: require('../assets/4.jpg')
+          url: require('../assets/4.jpeg')
         }
       ]
     }
   }
 }
 </script>
-<style lang="less" scoped>
+<style lang="less">
 #chinaMap {
   width: 100%;
   height: 100%;
@@ -56,6 +56,12 @@ export default {
       margin: 0px;
       width: 100%;
       height: auto;
+      .el-carousel-item {
+        img {
+          width:100%;
+          height:auto;
+        }
+      }
     }
   }
 }

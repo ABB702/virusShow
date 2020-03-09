@@ -20,17 +20,17 @@ export default {
   data () {
     return {
       formData: {
-        username: '贱哥哥jj',
-        password: '3'
+        username: 'admin',
+        password: 'admin'
       },
       rules: {
         username: [
           { required: true, message: '请输入用户名称', trigger: 'blur' },
-          { min: 3, max: 20, message: '长度在 1 到 20 个字符', trigger: 'blur' }
+          { min: 3, max: 20, message: '长度在 3 到 20 个字符', trigger: 'blur' }
         ],
         password: [
           { required: true, message: '请输入密码', trigger: 'blur' },
-          { min: 1, max: 20, message: '长度在 1 到 20 个字符', trigger: 'blur' }
+          { min: 5, max: 20, message: '长度在 5 到 20 个字符', trigger: 'blur' }
         ]
       }
     }
@@ -43,10 +43,11 @@ export default {
           this.$http.get('/users').then(res => {
             const getPwd = res.data.filter(item => item.name === this.formData.username) // return [{}]
             console.log(res) // tempconsole
-            if (getPwd[0].id == this.formData.password){ //eslint-disable-line
+            if (getPwd[0].password == this.formData.password){ //eslint-disable-line
               console.log('跳转')
               window.sessionStorage.setItem('token', getPwd[0].id) // 假token
               this.$router.push('/home')
+              this.$message.success('登录成功')
             }//eslint-disable-line
             else {
               this.$message.error('用户名或密码错误')

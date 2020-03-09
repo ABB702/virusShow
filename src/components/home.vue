@@ -1,6 +1,6 @@
 <template>
   <div id="homeApp">
-    <section class="nav"><navi></navi></section>
+    <section class="nav"><div id="homett">新冠数据可视化</div><navi></navi></section>
     <div id="homeWrapper">
       <!--left side-->
       <aside class="homeLeft">
@@ -27,7 +27,7 @@ import navi from '../components/navi'
 import totalsicksnum from '@/components/totalsicksnum'
 import floads from '@/components/floads'
 import chinamap from '@/components/chinamap'
-// import totalsickslist from '@/components/totalsickslist'
+import totalsickslist from '@/components/totalsickslist'
 import provinces from '@/components/provinces'
 import comments from '@/components/comments'
 export default {
@@ -42,7 +42,7 @@ export default {
     totalsicksnum,
     floads,
     chinamap,
-    // totalsickslist,
+    totalsickslist,
     provinces,
     comments
   }
@@ -50,6 +50,23 @@ export default {
 </script>
 
 <style lang="less" scoped>
+#homett {
+  width: 300px;
+  height: 200px;
+  padding: 0px;
+  box-sizing: border-box;
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  border:none;
+  text-align: center;
+  vertical-align: top;
+  font-size: 35px;
+  font-weight: 900;
+  color:#74b9ff;
+  text-shadow:0px 0px 10px #0984e3;
+}
 #homeApp {
   width: 100%;
   height: 100%;
@@ -79,16 +96,13 @@ export default {
   box-sizing:border-box;
   width: 100%;
   height: 30%;
-  background-color: green;
 }
 #homeWrapper aside .floads {
   box-sizing:border-box;
   width: 100%;
   height: 70%;
-  background-color: green;
 }
 .homeRight {
-  background-color: black;
   box-sizing:border-box;
   width: 79%;
   height: 100%;
@@ -97,7 +111,6 @@ export default {
   float: left;
   .homeRL {
     box-sizing:border-box;
-    background-color: blue;
     width:75%;
     margin-right: 1%;
     height:100%;
@@ -106,7 +119,6 @@ export default {
       box-sizing:border-box;
       width: 100%;
       height: 60%;
-      background-color: white;
     }
     .totalsickslist {
       box-sizing:border-box;
@@ -116,7 +128,6 @@ export default {
   }
   .homeRR {
     box-sizing:border-box;
-    background-color: yellow;
     width:24%;
     height:100%;
     overflow: hidden;
@@ -124,7 +135,6 @@ export default {
       box-sizing:border-box;
       width:100%;
       height: 50%;
-      background-color: white;
     }
     .comments {
       box-sizing:border-box;

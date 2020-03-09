@@ -2,8 +2,8 @@
   <div id="navApp">
     <div class="navWrapper">
       <li>
-        <img src="#" alt="图标">
-        <span>&emsp;User</span>
+        <img src="../assets/usr.png" alt="图标">
+        <span>&emsp;登录中</span>
       </li>
       <li>
         <el-button type="info" size="mini" icon="el-icon-remove" round @click="logout">登出</el-button>
@@ -29,10 +29,14 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+img {
+  height:20px;
+  width:aoto;
+}
 #navApp {
   width: 100%;
   height: 30px;
-  background-color: rgba(206, 214, 224,1);
+  background-color:#000;
   margin: 0px;
   padding: 0px;
   box-shadow: 2px 2px 2px #888888
@@ -55,8 +59,8 @@ export default {
 .navWrapper li span {
   text-decoration: none;
   position: relative;
-  color: #313131;
-  font-size: 16px;
+  color: #b2bec3;
+  font-size: 14px;
   font-weight: 600;
   font-family: Helvetica, Tahoma, Arial, "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei";
   overflow: hidden;

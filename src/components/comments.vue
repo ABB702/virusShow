@@ -4,11 +4,11 @@
         <ul>
           <li v-show="comments.length==0">No Data{{searchCont}}</li>
           <li v-for="item in comments" :key="item.id">
-            <div class="iconusr"></div>
+            <div class="iconusr"><img src="../assets/usr.png" alt="图标"></div>
             <div class="comusr">
               <div class="usr">{{item.name}}</div>
               <p class="info">{{item.content}}</p>
-              <div class="comdate">{{item.date|dateFormat}}&emsp;{{item.id}}楼
+              <div class="comdate">{{item.date|dateFormat}}&emsp;{{Number(item.id) + 1}}楼
                 <el-button size="mini" @click='delComment(item.id)' type="danger" icon="el-icon-delete" circle></el-button>
               </div>
             </div>
@@ -16,15 +16,16 @@
         </ul>
       </section>
       <section class="input">
-          <article>
-              <input type="text" v-model="inputCom" @keyup.enter='addComment'>
+          <article class="inputCont">
+              <input type="text" v-model="inputCom" @keyup.enter='addComment' placeholder="发表评论">
           </article>
-          <button @click='addComment'>添加</button>
+          <div></div>
+          <button class="addBut" @click='addComment'>√</button>
           <!-- <article>
               <input type="text" v-model.lazy="searchCont">
           </article> -->
       </section>
-  </div>
+    </div>
 </template>
 <script>
 export default {
@@ -75,7 +76,7 @@ export default {
       if (!confirm('确定删除评论？')) return
       const index = this.comments.findIndex(item => item.id == id)//eslint-disable-line
       this.comments.splice(index, 1)
-      this.$http.post('/comments/' + index).then(ret => {
+      this.$http.delete('/comments/' + index).then(ret => {
         this.$message.success('删除成功')
       })
     }
@@ -116,7 +117,8 @@ export default {
   .output {
     box-sizing: border-box;
     font-size: 10px;
-    height: 80%;
+    margin-top:10px;
+    height: 200px;
     width: 100%;
     overflow-y: auto;
     ul {
@@ -128,43 +130,61 @@ export default {
         .iconusr {
           box-sizing: content-box;
           float:left;
-          width: 0px;
-          height: 0px;
-          border: 10px solid red;
-          border-color: red transparent red red ;
-          -moz-border-radius: 10px;
-          -webkit-border-radius: 10px;
-          border-radius: 10px;
+          width: 20px;
+          height: 20px;
+          img {
+            width: 20px;
+            height: 20px;
+          }
         }
         .comusr {
           position: relative;
           margin-left:24px;
           padding:4px 0 2px;
           border-top:1px solid #e5e9ef;
+          .usr {
+            font-size: 10px;
+            font-weight: 700;
+            color: #eb4d4b;
+          }
+          .info {
+            font-size: 10px;
+            color: #7ed6df;
+          }
+          .comdate {
+            font-size: 10px;
+            color: #c7ecee;
+          }
         }
       }
     }
   }
   .input {
     box-sizing: border-box;
-    height: 20%;
+    margin-top:10px;
+    height: auto;
     width: 100%;
-    article {
-      width:140px;
+    .inputCont {
+      width:80%;
       float:left;
       margin-right: 10px;
       input {
-        width:140px;
+        box-sizing: border-box;
+        width:100%;
         font-size: 10px;
         border:0;
+        border-radius: 2px;
         border-bottom: 1px solid white;
         padding:1px 2px;
-        background: rgba(47, 121, 121, 0.5);
-        color:rgba(241, 242, 246,0.5);
+        background: rgba(47, 121, 121, 0);
+        color:#fff;
       }
     }
+    div {
+      width:5%;
+    }
     button {
-      width:40px;
+      width:15%;
       height:20px;
       font-size:10px;
       font-weight: 600;

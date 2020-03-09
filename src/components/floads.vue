@@ -56,6 +56,10 @@ export default {
 .titleT {
   height: 10%;
   text-align: center;
+  vertical-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: #dff9fb;
 }
 .contentT {
   height: 90%;
@@ -70,6 +74,7 @@ export default {
     list-style: none;
     li {
       font-size: 10px;
+      color: #7ed6df;
     }
   }
 }
